@@ -32,37 +32,86 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Cond
 
 */
 
-let postsArray = [
+let posts = [
     {
         idPost: 1 ,
         nameAuthor:"Davide Mucci",
-        photoAuthor:"../img/profile_1.jpg",
+        photoAuthor:"./assets/img/profile_1.jpg",
         date:"04-12-2022",
         textPost: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, ipsum!",
-        imgPost: "../img/photo_post_1",
+        imgPost: "./assets/img/photo_post_1.jpg",
         numberLikes: 12,
     },
     {
         idPost: 2 ,
         nameAuthor:"Luca Corti",
-        photoAuthor:"../img/profile_2.jpg",
+        photoAuthor:"./assets/img/profile_2.jpg",
         date:"04-11-2022",
-        textPost: "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus nemo debitis eligendi, tempora voluptas adipisci fugit iusto sunt veniam. ipsum dolor sit amet consectetur adipisicing elit. Animi, ipsum!",
-        imgPost: "../img/photo_post_2",
+        textPost: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus nemo debitis eligendi, tempora voluptas adipisci fugit iusto sunt veniam. ipsum dolor sit amet consectetur adipisicing elit. Animi, ipsum!",
+        imgPost: "./assets/img/photo_post_2.jpg",
         numberLikes: 24,
     },
     {
         idPost: 3 ,
         nameAuthor:"Sara Rossi",
-        photoAuthor:"../img/profile_3.jpg",
+        photoAuthor:"./assets/img/profile_3.jpg",
         date:"04-10-2022",
-        textPost: "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus nemo debitis eligendi, tempora voluptas adipisci fugit iusto sunt veniam. ipsum dolor sit amet consectetur adipisicing elit. Animi, ipsum!",
-        imgPost: "../img/photo_post_3",
+        textPost: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus nemo debitis eligendi, tempora voluptas adipisci fugit iusto sunt veniam. ipsum dolor sit amet consectetur adipisicing elit. Animi, ipsum!",
+        imgPost: "./assets/img/photo_post_3.jpg",
         numberLikes: 1,
     }
 
 
 ]
 
-console.log(postsArray);
 
+// M2 seleziono un nodo della dom a cui appendere HTML
+
+// creo costante di markup per inserire HTML da inserire in pagina
+
+// eseguo un ciclo forEach per "stampare" tutti i post nell'array
+
+// appendo markup a nodo della DOM
+
+let cardsBoxElement = document.querySelector('.cards');
+
+
+
+posts.forEach(post => { 
+    let postMarkUp = 
+    cardsBoxElement.insertAdjacentHTML("beforeend",`
+        <div class="col">
+            <div class="card">
+                <div class="user d-flex align-item-center p-3">
+                    <div class="profile_img">
+                        <img style="height: 80px;" class="rounded-circle" src="${post.photoAuthor}"
+                            alt="">
+                    </div>
+                    <div class="author-date d-flex flex-column justify-content-center ps-2">
+                        <div class="fw-bold">${post.nameAuthor}</div>
+                        <div class="text-secondary">${post.date}</div>
+                    </div>
+                </div>
+                <div class="text_post px-3">
+                    <p>${post.textPost}</p>
+                </div>
+                <div class="img_box px-3">
+                    <img class="rounded" src="${post.imgPost}">
+                </div>
+                <div class="feedback d-flex align-item-center p-3 text-center mt-3">
+                    <div class="likes w-50">
+                        <i class="fa-solid fa-thumbs-up fa-xl pe-2"></i><span>mi piace</span>
+                    </div>
+                    <div class="counter-likes w-50">
+                        <p>Piace a <strong>${post.numberLikes}</strong> persone</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.card  -->
+            </div>
+        `
+
+)
+});

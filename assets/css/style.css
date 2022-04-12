@@ -15,7 +15,7 @@ body{
 }
 
 .title{
-    padding: 2rem;
+    margin-top: 2rem;
 }
 
 .box{
@@ -24,5 +24,6 @@ body{
 }
 
 .card{
+    margin-top: 2rem;
     background-color: white;
 }
