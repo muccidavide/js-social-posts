@@ -75,43 +75,70 @@ let posts = [
 
 let cardsBoxElement = document.querySelector('.cards');
 
-
-
-posts.forEach(post => { 
-    let postMarkUp = 
-    cardsBoxElement.insertAdjacentHTML("beforeend",`
-        <div class="col">
-            <div class="card">
-                <div class="user d-flex align-item-center p-3">
-                    <div class="profile_img">
-                        <img style="height: 80px;" class="rounded-circle" src="${post.photoAuthor}"
-                            alt="">
+function generatePost(posts){
+    cardsBoxElement.innerHTML = "";
+    return posts.forEach(post => { 
+        
+    
+        cardsBoxElement.insertAdjacentHTML("beforeend",`
+            <div class="col">
+                <div class="card">
+                    <div class="user d-flex align-item-center p-3">
+                        <div class="profile_img">
+                            <img style="height: 80px;" class="rounded-circle" src="${post.photoAuthor}"
+                                alt="">
+                        </div>
+                        <div class="author-date d-flex flex-column justify-content-center ps-2">
+                            <div class="fw-bold">${post.nameAuthor}</div>
+                            <div class="text-secondary">${post.date}</div>
+                        </div>
                     </div>
-                    <div class="author-date d-flex flex-column justify-content-center ps-2">
-                        <div class="fw-bold">${post.nameAuthor}</div>
-                        <div class="text-secondary">${post.date}</div>
+                    <div class="text_post px-3">
+                        <p>${post.textPost}</p>
                     </div>
-                </div>
-                <div class="text_post px-3">
-                    <p>${post.textPost}</p>
-                </div>
-                <div class="img_box px-3">
-                    <img class="rounded" src="${post.imgPost}">
-                </div>
-                <div class="feedback d-flex align-item-center p-3 text-center mt-3">
-                    <div class="likes w-50">
-                        <i class="fa-solid fa-thumbs-up fa-xl pe-2"></i><span>mi piace</span>
+                    <div class="img_box px-3">
+                        <img class="rounded" src="${post.imgPost}">
                     </div>
-                    <div class="counter-likes w-50">
-                        <p>Piace a <strong>${post.numberLikes}</strong> persone</p>
+                    <div class="feedback d-flex align-item-center p-3 text-center mt-3">
+                        <div class="likes-${post.idPost} w-50">
+                            <i class="fa-solid fa-thumbs-up fa-xl pe-2"></i><span>mi piace</span>
+                        </div>
+                        <div class="counter-likes w-50">
+                            <p>Piace a <strong class="counter-${post.idPost}">${post.numberLikes}</strong> persone</p>
+                        </div>
                     </div>
+    
+    
                 </div>
+                <!-- /.card  -->
+                </div>
+            `
+    
+    )
+        
+    });
+}
 
 
-            </div>
-            <!-- /.card  -->
-            </div>
-        `
+generatePost(posts)
 
-)
+posts.forEach(post => {
+
+    const likeElement = document.querySelector(`.likes-${post.idPost}`);
+
+    likeElement.addEventListener('click', function (){
+
+        if (!likeElement.classList.contains("text-primary")) {
+            likeElement.classList.add("text-primary")
+            let newLikeCount = ++ post.numberLikes 
+            let counter = document.querySelector(`.counter-${post.idPost}`)
+            console.log(counter);
+
+            counter.innerHTML= newLikeCount
+        }
+    
+        
+
+    })
+  
 });
