@@ -75,9 +75,17 @@ let posts = [
 
 let cardsBoxElement = document.querySelector('.cards');
 
+function convertDate(dateString) {
+    var date = new Date(dateString);
+    return date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
+}
+
 function generatePost(posts){
     cardsBoxElement.innerHTML = "";
     return posts.forEach(post => { 
+
+        let date = convertDate(post.date)
+        
         
     
         cardsBoxElement.insertAdjacentHTML("beforeend",`
@@ -90,7 +98,7 @@ function generatePost(posts){
                         </div>
                         <div class="author-date d-flex flex-column justify-content-center ps-2">
                             <div class="fw-bold">${post.nameAuthor}</div>
-                            <div class="text-secondary">${post.date}</div>
+                            <div class="text-secondary">${date}</div>
                         </div>
                     </div>
                     <div class="text_post px-3">
@@ -136,8 +144,6 @@ posts.forEach(post => {
 
             counter.innerHTML= newLikeCount
         }
-    
-        
 
     })
   
