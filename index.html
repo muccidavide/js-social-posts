@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Js Social Post </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
         integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,6 +21,52 @@
 </head>
 
 <body>
+
+    <main id="main_site">
+        <div class="title text-center">
+            <h1>Social Post</h1>
+        </div>
+
+        <div class="box">
+            <div class="cards row row-cols-1">
+                <div class="col">
+                    <div class="card">
+                        <div class="user d-flex align-item-center p-3">
+                            <div class="profile_img">
+                                <img style="height: 80px;" class="rounded-circle" src="./assets/img/profile_1.jpg"
+                                    alt="">
+                            </div>
+                            <div class="author-date d-flex flex-column justify-content-center ps-2">
+                                <div>nameAuthor</div>
+                                <div>date</div>
+                            </div>
+                        </div>
+                        <div class="text_post px-3">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus consectetur nesciunt
+                                corrupti, eos sed nulla numquam voluptas voluptates cum recusandae.</p>
+                        </div>
+                        <div class="img_box px-3">
+                            <img class="rounded" src="./assets/img/photo_post_1.jpg" alt="">
+                        </div>
+                        <div class="feedback d-flex align-item-center p-3 text-center mt-3">
+                            <div class="likes w-50">
+                                <i class="fa-solid fa-thumbs-up fa-xl pe-2"></i><span>mi piace</span>
+                            </div>
+                            <div class="counter-likes w-50">
+                                <p>Piace a <strong>80</strong> persone</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /.card  -->
+                </div>
+
+            </div>
+        </div>
+        <!-- /.container -->
+    </main>
+    <!-- /#main_site -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
