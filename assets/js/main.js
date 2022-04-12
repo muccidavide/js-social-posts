@@ -54,7 +54,7 @@ let posts = [
     {
         idPost: 3 ,
         nameAuthor:"Sara Rossi",
-        photoAuthor:"./assets/img/profile_3.jpg",
+        photoAuthor:"",
         date:"04-10-2022",
         textPost: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus nemo debitis eligendi, tempora voluptas adipisci fugit iusto sunt veniam. ipsum dolor sit amet consectetur adipisicing elit. Animi, ipsum!",
         imgPost: "./assets/img/photo_post_3.jpg",
@@ -85,16 +85,24 @@ function generatePost(posts){
     return posts.forEach(post => { 
 
         let date = convertDate(post.date)
-        
-        
-    
+        let imgUser = `<img style="height: 80px;" class="rounded-circle" src="${post.photoAuthor}"
+        alt="">`
+
+        if (post.photoAuthor === "") {
+            let dividedNameUser = post.nameAuthor.split(" ");
+
+            let initialsName =`<div class="round_img"><div>${dividedNameUser[0].slice(0,1) + dividedNameUser[1].slice(0,1)}</div></div>`
+            imgUser = initialsName
+
+        }
+
         cardsBoxElement.insertAdjacentHTML("beforeend",`
             <div class="col">
                 <div class="card">
                     <div class="user d-flex align-item-center p-3">
                         <div class="profile_img">
-                            <img style="height: 80px;" class="rounded-circle" src="${post.photoAuthor}"
-                                alt="">
+                            ${imgUser}
+                               
                         </div>
                         <div class="author-date d-flex flex-column justify-content-center ps-2">
                             <div class="fw-bold">${post.nameAuthor}</div>
